@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rejoindre un foyer sur kaimono</title>
+<meta name="description" content="Ouvre ce lien sur ton iPhone pour rejoindre la liste de courses du foyer.">
+<meta name="theme-color" content="#F3EEE3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151412" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../assets/icon.png">
+<link rel="apple-touch-icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="bar">
+  <a class="brand" href="../"><span class="seal" aria-hidden="true">買</span>kaimono</a>
+</header>
+<main class="doc">
+
+<div class="join">
+  <h1>Tu es invité·e à rejoindre une liste de courses</h1>
+  <p class="code" id="code" hidden></p>
+  <a class="cta" id="open" href="kaimono://">Ouvrir dans kaimono</a>
+  <p class="small">Pas encore l’app ? Elle arrive bientôt sur l’App Store, puis touche à nouveau ce lien.</p>
+</div>
+<script>
+  (function () {
+    var m = location.search.match(/[?&]c=([A-Za-z0-9]{6})/);
+    if (!m) return;
+    var code = m[1].toUpperCase();
+    var url = 'kaimono://join/' + code;
+    var open = document.getElementById('open');
+    var c = document.getElementById('code');
+    open.href = url;
+    c.textContent = 'Code du foyer : ' + code;
+    c.hidden = false;
+    location.href = url;
+  })();
+</script>
+
+</main>
+<footer class="foot">
+  <a href="../confidentialite/">Confidentialité</a>
+  <a href="../cgu/">Conditions d’utilisation</a>
+  <a href="../assistance/">Assistance</a>
+  <span>Sans pub, données hébergées à Paris.</span>
+</footer>
+</body>
+</html>
